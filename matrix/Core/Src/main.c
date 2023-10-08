@@ -174,13 +174,15 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   DMD(1, 1);
   clearScreen(true);
-// HAL_TIM_Base_Start_IT(&htim2);
+  selectFont(System5x7);
+  // HAL_TIM_Base_Start_IT(&htim2);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-drawFilledBox(0, 0, 12, 12, GRAPHICS_NORMAL);
+//drawFilledBox(0, 0, 12, 12, GRAPHICS_NORMAL);
+	  drawChar(0, 0, 'a', GRAPHICS_NORMAL);
 //selectFont(System5x7);
 //drawString(0,0, "UTEH", 4, GRAPHICS_NORMAL);
 //   drawString(0,9, "STR", 3, GRAPHICS_NORMAL);

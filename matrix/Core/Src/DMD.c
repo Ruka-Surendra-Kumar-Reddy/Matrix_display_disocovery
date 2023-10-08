@@ -219,8 +219,8 @@ int drawChar(const int bX, const int bY, const unsigned char letter, byte bGraph
     uint8_t width = 0;
     uint8_t bytes = (height + 7) / 8;
 
-    uint8_t firstChar = ((*Font) + FONT_FIRST_CHAR);
-    uint8_t charCount = ((*Font) + FONT_CHAR_COUNT);
+    uint8_t firstChar = (*(Font + FONT_FIRST_CHAR));
+    uint8_t charCount = (*(Font + FONT_CHAR_COUNT));
 
     uint16_t index = 0;
 
@@ -345,7 +345,7 @@ void drawMarquee(const char *bChars, byte length, int left, int top)
     marqueeOffsetX = left;
     marqueeLength = length;
     drawString(marqueeOffsetX, marqueeOffsetY, marqueeText, marqueeLength,
-	   GRAPHICS_NORMAL);
+	GRAPHICS_NORMAL);
 }
 
 bool stepMarquee(int amountX, int amountY)

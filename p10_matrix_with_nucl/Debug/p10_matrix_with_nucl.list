@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  00018ffe  00000000  00000000  00029acb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   000096d6  00000000  00000000  00042ac9  2**0
+ 18 .debug_line   00008e5b  00000000  00000000  00042ac9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    0009b37c  00000000  00000000  0004c19f  2**0
+ 19 .debug_str    0009b39e  00000000  00000000  0004b924  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  00001e54  00000000  00000000  000e751c  2**2
+ 20 .debug_frame  00001e54  00000000  00000000  000e6cc4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000076  00000000  00000000  000e9370  2**0
+ 21 .debug_line_str 00000098  00000000  00000000  000e8b18  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -261,7 +261,7 @@ void scanDisplayBySPI()
  8000306:	781b      	ldrb	r3, [r3, #0]
  8000308:	009b      	lsls	r3, r3, #2
  800030a:	60bb      	str	r3, [r7, #8]
-      uint8_t offset=rowsize * bDMDByte;
+        uint8_t offset=rowsize * bDMDByte;
  800030c:	68bb      	ldr	r3, [r7, #8]
  800030e:	b2da      	uxtb	r2, r3
  8000310:	4b5c      	ldr	r3, [pc, #368]	; (8000484 <scanDisplayBySPI+0x198>)
