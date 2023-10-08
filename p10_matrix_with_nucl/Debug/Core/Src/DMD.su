@@ -1,0 +1,14 @@
+../Core/Src/DMD.c:33:6:clearScreen	16	static
+../Core/Src/DMD.c:40:6:DMD	16	static
+../Core/Src/DMD.c:64:6:writePixel	40	static
+../Core/Src/DMD.c:114:6:drawLine	48	static
+../Core/Src/DMD.c:160:6:selectFont	16	static
+../Core/Src/DMD.c:165:6:drawFilledBox	40	static
+../Core/Src/DMD.c:171:6:drawBox	32	static
+../Core/Src/DMD.c:179:5:charWidth	24	static
+../Core/Src/DMD.c:207:5:drawChar	56	static
+../Core/Src/DMD.c:268:6:drawString	48	static
+../Core/Src/DMD.c:290:6:scanDisplayBySPI	24	static
+../Core/Src/DMD.c:337:6:drawMarquee	40	static
+../Core/Src/DMD.c:353:6:stepMarquee	64	static
+../Core/Src/DMD.c:429:6:drawTestPattern	32	static
