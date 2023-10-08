@@ -172,9 +172,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  DMD(1, 1);
+  DMD(1, 1); //  DMD(uint8_t panelsWide, uint8_t panelsHigh)
+
   clearScreen(true);
-  selectFont(System5x7);
+  selectFont(Arial_Black_16);
   // HAL_TIM_Base_Start_IT(&htim2);
   while (1)
   {
@@ -182,9 +183,9 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 //drawFilledBox(0, 0, 12, 12, GRAPHICS_NORMAL);
-	  drawChar(0, 0, 'a', GRAPHICS_NORMAL);
+//	  drawChar(0, 0, 'a', GRAPHICS_NORMAL);
 //selectFont(System5x7);
-//drawString(0,0, "UTEH", 4, GRAPHICS_NORMAL);
+drawString(0,0, "UTEH", 4, GRAPHICS_NORMAL);
 //   drawString(0,9, "STR", 3, GRAPHICS_NORMAL);
 	  scanDisplayBySPI();
 

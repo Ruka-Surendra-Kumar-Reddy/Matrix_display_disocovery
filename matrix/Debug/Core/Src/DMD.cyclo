@@ -5,7 +5,7 @@
 ../Core/Src/DMD.c:158:6:selectFont	1
 ../Core/Src/DMD.c:163:6:drawFilledBox	2
 ../Core/Src/DMD.c:169:6:drawBox	1
-../Core/Src/DMD.c:177:5:charWidth	4
+../Core/Src/DMD.c:177:5:charWidth	6
 ../Core/Src/DMD.c:205:5:drawChar	20
 ../Core/Src/DMD.c:266:6:drawString	9
 ../Core/Src/DMD.c:288:6:scanDisplayBySPI	7
