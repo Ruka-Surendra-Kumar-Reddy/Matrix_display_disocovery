@@ -181,23 +181,23 @@ int charWidth(const unsigned char letter)
     if (c == ' ') c = 'n';
     uint8_t width = 0;
 
-    uint8_t firstChar = ((*Font) + FONT_FIRST_CHAR);
-    uint8_t charCount = ((*Font) + FONT_CHAR_COUNT);
+    uint8_t firstChar = (*(Font + FONT_FIRST_CHAR));
+    uint8_t charCount = (*(Font+ FONT_CHAR_COUNT));
 
-//    uint16_t index = 0;
+    uint16_t index = 0;
 
     if (c < firstChar || c >= (firstChar + charCount)) {
 	    return 0;
     }
     c -= firstChar;
 
-    if (((*Font) + FONT_LENGTH) == 0
-	&& ((*Font) + FONT_LENGTH + 1) == 0) {
+    if (*( Font + FONT_LENGTH) == 0
+	&& *(Font + FONT_LENGTH + 1) == 0) {
 	    // zero length is flag indicating fixed width font (array does not contain width data entries)
-	    width = ((*Font) + FONT_FIXED_WIDTH);
+	    width = *((Font) + FONT_FIXED_WIDTH);
     } else {
 	    // variable width font, read width data
-	    width = ((*Font) + FONT_WIDTH_TABLE + c);
+	    width = *((Font) + FONT_WIDTH_TABLE + c);
     }
 
     return width;
@@ -210,7 +210,7 @@ int drawChar(const int bX, const int bY, const unsigned char letter, byte bGraph
     }
 
     unsigned char c = letter;
-    uint8_t height =((*Font) + FONT_HEIGHT);
+    uint8_t height =(*(Font + FONT_HEIGHT));
     if (c == ' ') {
 	    int charWide = charWidth(' ');
 	   drawFilledBox(bX, bY, bX + charWide, bY + height, GRAPHICS_INVERSE);
@@ -227,25 +227,25 @@ int drawChar(const int bX, const int bY, const unsigned char letter, byte bGraph
     if (c < firstChar || c >= (firstChar + charCount)) return 0;
     c -= firstChar;
 
-    if ((Font + FONT_LENGTH) == 0
-	    &&(Font + FONT_LENGTH + 1) == 0) {
+    if ( *(Font + FONT_LENGTH) == 0
+	    && *(Font + FONT_LENGTH + 1) == 0) {
 	    // zero length is flag indicating fixed width font (array does not contain width data entries)
-	    width = ((*Font) + FONT_FIXED_WIDTH);
+	    width = (*(Font + FONT_FIXED_WIDTH));
 	    index = c * bytes * width + FONT_WIDTH_TABLE;
     } else {
 	    // variable width font, read width data, to get the index
 	    for (uint8_t i = 0; i < c; i++) {
-	        index += ((*Font) + FONT_WIDTH_TABLE + i);
+	        index += *(Font + FONT_WIDTH_TABLE + i);
 	    }
 	    index = index * bytes + charCount + FONT_WIDTH_TABLE;
-	    width = ((*Font) + FONT_WIDTH_TABLE + c);
+	    width = *( Font + FONT_WIDTH_TABLE + c);
     }
     if (bX < -width || bY < -height) return width;
 
     // last but not least, draw the character
     for (uint8_t j = 0; j < width; j++) { // Width
 	    for (uint8_t i = bytes - 1; i < 254; i--) { // Vertical Bytes
-	        uint8_t data = ((*Font) + index + j + (i * width));
+	        uint8_t data = *((Font) + index + j + (i * width));
 		    int offset = (i * 8);
 		    if ((i == bytes - 1) && bytes > 1) {
 		        offset = height - 8;
@@ -267,7 +267,7 @@ void drawString(int bX, int bY, const char *bChars, byte length, byte bGraphicsM
 {
     if (bX >= (DMD_PIXELS_ACROSS*DisplaysWide) || bY >= DMD_PIXELS_DOWN * DisplaysHigh)
 	return;
-    uint8_t height = ((*Font) + FONT_HEIGHT);
+    uint8_t height = *((Font) + FONT_HEIGHT);
     if (bY+height<0) return;
 
     int strWidth = 0;
@@ -339,7 +339,7 @@ void drawMarquee(const char *bChars, byte length, int left, int top)
 	    marqueeText[i] = bChars[i];
 	    marqueeWidth += charWidth(bChars[i]) + 1;
     }
-    marqueeHeight=((*Font)  + FONT_HEIGHT);
+    marqueeHeight=*((Font)  + FONT_HEIGHT);
     marqueeText[length] = '\0';
     marqueeOffsetY = top;
     marqueeOffsetX = left;
